@@ -1,0 +1,48 @@
+<html>
+<body>    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<p> Insert Info to Create an Account</p>
+<p> Username: </p>
+<textarea name='username' id="username"> </textarea>
+<p> Password: </p>
+<textarea name='password' id='password'> </textarea>
+<p> Name: </p>
+<textarea name='name' id="name"> </textarea>
+<p> Address: </p>
+<textarea name='address' id="address"> </textarea>
+<p> E-mail: </p>
+<textarea name='email' id="email"> </textarea>
+<input type='button' onclick='CreateAccount()' value='Create Account'></input>
+
+<script>
+function CreateAccount(){
+
+var userhandle = document.getElementById('username').value;
+var userpassword = document.getElementById('password]').value;
+var useraddress = document.getElementById('address').value;
+var useremail = document.getElementById('email').value;
+var username = document.getElementById('name').value;
+
+var data2 = { 'adress': useradress , 'email': useremail , 'name' : username , 'password' : userpassword , 'username' : userhandle};
+
+$.ajax({
+    url:'http://localhost:8085/Yummy/api/user',
+    type: 'POST',
+    dataType: 'json',
+    contentType: 'application/json',
+    data: data2,
+    success:function(responsedata){
+    // process on data
+              // alert("got response as "+"'"+responsedata+"'");
+
+        },
+        error: function(){
+      alert('Cannot get data');
+    }
+     })
+
+}
+</script>
+</body>
+</html>

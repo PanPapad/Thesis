@@ -1,0 +1,38 @@
+<html>
+<body>
+<p> Insert your username and password in the fields below </p>
+<form name="cookieform" id="login" method="post">
+      <input type="text" name="username" id="username" class="text"/>
+      <input type="password" name="password" id="password" class="text"/>
+      <input type="submit" name="sub" value="Submit" class="page"/>
+</form>
+
+<script>
+
+
+var username = $("input#username").val();
+var password = $("input#password").val();  
+
+function make_base_auth(username, password) {
+  var tok = user + ':' + password;
+  var hash = btoa(tok);
+  return "Basic " + hash;
+}
+$.ajax
+  ({
+    type: "GET",
+    url: "http://localhost:8085/Yummy/api/user/",
+    dataType: 'json',
+    contentType: 'application/JSON',
+    data: '{}',
+    //headers: {"Authorization": "Basic xxxx"},
+    beforeSend: function (xhr){ 
+        xhr.setRequestHeader('Authorization', make_base_auth(username, password)); 
+    },
+    success: function (){
+        alert('Thanks for logging in!'); 
+    }
+});
+</script>
+</body>
+</html>

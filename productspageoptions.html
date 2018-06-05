@@ -1,0 +1,79 @@
+<html>
+<body>    
+<form>
+<p> Insert Info to update the product</p>
+<textarea name='name' id='name'> </textarea>
+<textarea name='category' id='category'> </textarea>
+<input type='button' onclick='UpdateProduct()' value='Update Product'>
+
+<p> Get Product Details </p>
+<input type='button' onclick='GetProductDetails()' value='Get Product Details'>
+
+<p> Delete the Product </p>
+<input type='button' onclick='DeleteProduct()' value='Delete Product'>
+</form>
+
+<script>
+function UpdateProduct(){
+
+var productname = document.getElementById('name').value;
+var productcategory = document.getElementById('category').value;
+var data1 = { 'name': productname , 'category': productdescription};
+
+$.ajax({
+    url:'http://localhost:8085/Yummy/recipe',
+    type: 'POST',
+    dataType: 'json',
+    contentType: 'application/json',
+    data: data1,
+    success:function(responsedata){
+    // process on data
+              // alert("got response as "+"'"+responsedata+"'");
+
+        },
+        error: function(){
+      alert('Cannot get data');
+    }
+    
+})
+
+}
+
+
+
+function GetProductDetails(){
+
+$.ajax({
+    url: 'http://localhost:8085/Yummy/api/recipe/1',
+    type: 'GET',
+    processData: false,
+    //headers: { 'Authorization' : 'Token #{auth_token}' },
+    success: function (data) {
+      alert(JSON.stringify(data));
+    },
+    error: function(){
+      alert('Cannot get data');
+    }
+})
+
+
+}
+
+function DeleteProduct(){
+
+$.ajax({
+    url: 'http://localhost:8085/Yummy/api/recipe/1',
+    type: 'DELETE',
+    success: function(result) {
+        alert('File Successfully deleted');
+    },
+    error: function(){
+      alert('Could not delete the  file');
+    }
+})
+
+
+}
+</script>
+</body>
+</html>

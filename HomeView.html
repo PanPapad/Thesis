@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+
+var controlsObj, i;
+
+controlsObj = {
+        "control": [
+        { "controlTypeID":"com.balsamiq.mockups::Button", "x":"274", "y":"304", "text":"View Details" },
+        { "controlTypeID":"com.balsamiq.mockups::Button", "x":"598", "y":"304", "text":"View Details" },
+        { "controlTypeID":"com.balsamiq.mockups::Button", "x":"898", "y":"304", "text":"View Details" },
+        { "controlTypeID":"com.balsamiq.mockups::Button", "x":"274", "y":"472", "text":"View Details" },
+        { "controlTypeID":"com.balsamiq.mockups::Button", "x":"598", "y":"472", "text":"View Details" },
+        { "controlTypeID":"com.balsamiq.mockups::Button", "x":"898", "y":"472", "text":"View Details" },
+        { "controlTypeID":"com.balsamiq.mockups::Image", "x":"283", "y":"210" },
+        { "controlTypeID":"com.balsamiq.mockups::Image", "x":"607", "y":"210" },
+        { "controlTypeID":"com.balsamiq.mockups::Image", "x":"907", "y":"210" },
+        { "controlTypeID":"com.balsamiq.mockups::Image", "x":"283", "y":"378" },
+        { "controlTypeID":"com.balsamiq.mockups::Image", "x":"607", "y":"378" },
+        { "controlTypeID":"com.balsamiq.mockups::Image", "x":"907", "y":"378" },
+        { "controlTypeID":"com.balsamiq.mockups::Link", "x":"918", "y":"19", "text":"Sign up to get full content" },
+        { "controlTypeID":"com.balsamiq.mockups::Label", "x":"589", "y":"19", "text":"Welcome to Rest Reviews" },
+        { "controlTypeID":"com.balsamiq.mockups::Searchbox", "x":"549", "y":"151", "text":"Enter Search Term" },
+        { "controlTypeID":"com.balsamiq.mockups::LinkBar", "x":"118", "y":"20", "text":"Home" },
+        { "controlTypeID":"com.balsamiq.mockups::LinkBar", "x":"148", "y":"20", "text":"More Options" }
+    ]
+}
+
+for (i in controlsObj.control) {
+    if(controlsObj.control[i].controlTypeID == "com.balsamiq.mockups::Button"){
+    var btn = document.createElement("BUTTON");        
+    var t = document.createTextNode(controlsObj.control[i].text);       
+    btn.appendChild(t);  
+    document.body.appendChild(btn);
+    btn.style.position = "absolute";
+    btn.style.left = controlsObj.control[i].x + "px";
+    btn.style.top = controlsObj.control[i].y + "px"; 
+    btn.onclick = function () {
+        location.href = "http://google.gr"; 
+    } 
+    
+  }
+  else if(controlsObj.control[i].controlTypeID == "com.balsamiq.mockups::Image"){
+    var image = document.createElement("IMG");
+    image.setAttribute("src", "viewdetails.jpg");
+    image.setAttribute("width", "77");
+    image.setAttribute("height", "79");
+    image.setAttribute("alt", "There's an image here");
+    document.body.appendChild(image);
+    image.style.position = "absolute";
+    image.style.left = controlsObj.control[i].x + "px";
+    image.style.top = controlsObj.control[i].y + "px";
+  }
+  else if(controlsObj.control[i].controlTypeID == "com.balsamiq.mockups::Link"){
+    var a = document.createElement("a");
+    var linkText = document.createTextNode(controlsObj.control[i].text);
+    a.appendChild(linkText);
+    a.title = "Sign up now";
+    a.href = "http://example.com";
+    document.body.appendChild(a);
+    a.style.position = "absolute";
+    a.style.left = controlsObj.control[i].x + "px";
+    a.style.top = controlsObj.control[i].y + "px";
+  }
+  else if(controlsObj.control[i].controlTypeID == "com.balsamiq.mockups::Label"){
+    var a = document.createElement("a");
+    var linkText = document.createTextNode(controlsObj.control[i].text);
+    a.appendChild(linkText);
+    a.title = "Home";
+    a.href = "http://example.com";
+    document.body.appendChild(a);
+    a.style.position = "absolute";
+    a.style.left = controlsObj.control[i].x + "px";
+    a.style.top = controlsObj.control[i].y + "px";
+  }
+  else if(controlsObj.control[i].controlTypeID == "com.balsamiq.mockups::Searchbox"){
+    var searchbox = document.createElement("INPUT");
+    searchbox.setAttribute("type", "search");
+    searchbox.setAttribute("value", controlsObj.control[i].text);
+    document.body.appendChild(searchbox);
+    searchbox.style.position = "absolute";
+    searchbox.style.left = controlsObj.control[i].x + "px";
+    searchbox.style.top = controlsObj.control[i].y + "px";
+  }
+  else if(controlsObj.control[i].controlTypeID == "com.balsamiq.mockups::LinkBar"){
+    var navbar = document.createElement("NAV");   
+    document.body.appendChild(navbar);
+    var anchorElmnt = document.createElement("A");
+    anchorElmnt.setAttribute("href", "http://example.com");
+    var txt1 = document.createTextNode(controlsObj.control[i].text);
+    anchorElmnt.appendChild(txt1);
+    navbar.appendChild(anchorElmnt);
+    searchbox.style.position = "absolute";
+    searchbox.style.left = controlsObj.control[i].x + "px";
+    searchbox.style.top = controlsObj.control[i].y + "px";
+  }
+}
+
+</script>
+
+</body>
+</html>
