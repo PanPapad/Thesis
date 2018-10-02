@@ -1,0 +1,71 @@
+//when buttons are created
+
+<input id="1" class="button-primary" type="submit" value="Done" onclick="ajax($(this));return false;"/>
+<input id="2" class="button-primary" type="submit" value="Done" onclick="ajax($(this));return false;"/>
+<input id="3" class="button-primary" type="submit" value="Done" onclick="ajax($(this));return false;"/>
+
+//ajax
+
+function ajax($this) {
+    var id = $this.attr("id");
+
+
+    $.ajax({
+        method: "POST",
+        url: "my URL",
+        dataType: "JSON",
+        data: {
+            id: id
+        },
+        success: function (response) {
+            console.log(response);
+        }
+    });
+}
+
+//php
+
+if (isset($_POST["id"])) {
+    var_dump($_POST["id"]);
+    exit;
+}
+
+//more complete 
+
+<script>
+    $(document).ready(function(){
+        var clicked_btn = '';
+        $('form').submit(function(){ return false; });
+        $('form input[type=button]').click(function(){ 
+             clicked_btn = $(this).attr('id'); 
+             yourSubmitFunction(clicked_btn); 
+             return false; 
+        });
+    }
+</script>
+
+//selector
+
+var links = $('#links').getElementsByTagName('li');
+      
+// For each <li> inside #links
+for (var i = 0; i < links.length; i++) {
+  var link = links[i];
+  link.onclick = myFunction;
+}
+
+//to get id of buttons
+
+$(document).ready(function(){
+  $(document).on("click","button",function(){
+    alert(this.id);
+  });
+});
+
+//to set id of buttons
+
+var idCount = 1;
+$('div').each(function() {
+   $(this).attr('id', 'q' + idCount);
+   idCount++;
+});

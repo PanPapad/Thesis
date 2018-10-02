@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width">
+</head>
+<body>
+
+<button data-prodid="1" class="loadButton">View Details</button>
+<button data-prodid="2" class="loadButton">View Details</button>
+
+<div id="resultDiv"></div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$result = $("#resultDiv");
+	
+	$(".loadButton").on("click", function(e) {
+		var thisId = $(this).data("prodid");
+		console.log("Details about product with id"+thisId);
+		$result.text("");
+		$.getJSON("service.cfc?method=getData",{id:thisId}, function(res) {
+			console.log("back with "+JSON.stringify(res));
+			$result.text("Product "+res.name);
+		});
+	});
+});
+</script>
+</body>
+</html>
